@@ -51,8 +51,8 @@ def generate_playbook(advisory_ids, os_type):
         'tasks': tasks
     }]
 
-    # Write the playbook to a file in the temporary directory
-    playbook_path = os.path.join(target_directory, f'{os_type}_playbook.yml')
+    # Ensure the filename is in all lowercase
+    playbook_path = os.path.join(target_directory, f'{os_type.lower()}_playbook.yml')
     with open(playbook_path, 'w') as file:
         yaml.dump(playbook, file, default_flow_style=False)
 

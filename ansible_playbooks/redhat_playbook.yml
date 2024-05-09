@@ -1,0 +1,45 @@
+- become: 'yes'
+  hosts: all
+  tasks:
+  - command: sudo yum update -y
+    name: Update packages
+  - command: sudo yum upgrade --advisory RHSA-2023-5538
+    name: Upgrade advisory RHSA-2023-5538
+  - command: sudo yum upgrade --advisory RHSA-2023-5527
+    name: Upgrade advisory RHSA-2023-5527
+  - command: sudo yum upgrade --advisory RHSA-2023-5539
+    name: Upgrade advisory RHSA-2023-5539
+  - command: sudo yum upgrade --advisory RHSA-2023-5534
+    name: Upgrade advisory RHSA-2023-5534
+  - command: sudo yum upgrade --advisory RHSA-2023-5529
+    name: Upgrade advisory RHSA-2023-5529
+  - command: sudo yum upgrade --advisory RHSA-2023-5537
+    name: Upgrade advisory RHSA-2023-5537
+  - command: sudo yum upgrade --advisory RHSA-2023-5533
+    name: Upgrade advisory RHSA-2023-5533
+  - command: sudo yum upgrade --advisory RHSA-2023-5536
+    name: Upgrade advisory RHSA-2023-5536
+  - command: sudo yum upgrade --advisory RHSA-2023-5540
+    name: Upgrade advisory RHSA-2023-5540
+  - command: sudo yum upgrade --advisory RHSA-2023-5528
+    name: Upgrade advisory RHSA-2023-5528
+  - command: sudo yum upgrade --advisory RHSA-2023-5526
+    name: Upgrade advisory RHSA-2023-5526
+  - command: sudo yum upgrade --advisory RHSA-2023-5535
+    name: Upgrade advisory RHSA-2023-5535
+  - command: sudo yum upgrade --advisory RHSA-2023-5532
+    name: Upgrade advisory RHSA-2023-5532
+  - command: sudo yum upgrade --advisory RHSA-2023-5531
+    name: Upgrade advisory RHSA-2023-5531
+  - command: sudo yum upgrade --advisory RHSA-2023-5485
+    name: Upgrade advisory RHSA-2023-5485
+  - command: sudo yum upgrade --advisory RHSA-2023-5486
+    name: Upgrade advisory RHSA-2023-5486
+  - command: sudo yum upgrade --advisory RHSA-2023-5491
+    name: Upgrade advisory RHSA-2023-5491
+  - command: sudo yum upgrade --advisory RHSA-2023-5476
+    name: Upgrade advisory RHSA-2023-5476
+  - command: sudo yum upgrade --advisory RHSA-2023-5479
+    name: Upgrade advisory RHSA-2023-5479
+  - command: sudo yum upgrade --advisory RHSA-2023-5480
+    name: Upgrade advisory RHSA-2023-5480
