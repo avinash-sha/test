@@ -49,7 +49,9 @@
       when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RedHat']
 
     - name: Clean up playbook on remote host
+      become: yes
       file:
         path: "{{ temp_dir }}/{{ ansible_distribution|lower }}_playbook.yml"
         state: absent
       when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RedHat']
+
