@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Report</title>
+</head>
+<body>
+    <h1>System Update Report</h1>
+    <table border="1">
+        <tr>
+            <th>Hostname</th>
+            <th>Status</th>
+            <th>Details</th>
+        </tr>
+        {% for host in ansible_play_hosts_all %}
+        <tr>
+            <td>{{ host }}</td>
+            <td>{{ hostvars[host].update_status | default('Unknown') }}</td>
+            <td>{{ hostvars[host].update_details | default('No details available') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

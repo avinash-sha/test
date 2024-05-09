@@ -1,0 +1,27 @@
+---
+- name: Update all packages to the latest version
+  yum:
+    name: "*"
+    state: latest
+  register: packages_upgraded
+
+- name: Clean all yum cache
+  yum:
+    name: "*"
+    state: latest
+    update_cache: no
+
+- name: Check if reboot is needed
+  shell: "needs-restarting -r"
+  ignore_errors: true
+  register: reboot_needed
+
+- name: Reboot the machine if required
+  reboot:
+    reboot_timeout: 600
+  when: reboot_needed.rc == 1
+
+- name: Save update report
+  copy:
+    content: "{{ packages_upgraded }}"
+    dest: "/var/log/yum_update_info_{{ ansible_date_time.iso8601 }}.log"

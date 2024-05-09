@@ -1,0 +1,13 @@
+---
+- name: Check for and install updates
+  win_updates:
+    category_names:
+      - CriticalUpdates
+      - SecurityUpdates
+    state: installed
+  register: update_result
+
+- name: Reboot if required
+  win_reboot:
+    msg: "Rebooting for system updates"
+  when: update_result.reboot_required

@@ -1,0 +1,31 @@
+---
+- name: Update and Reboot Systems
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Run apt tasks if package manager is apt
+      include_role:
+        name: apt
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Run dnf tasks if package manager is dnf
+      include_role:
+        name: dnf
+      when: ansible_pkg_mgr == 'dnf'
+
+    - name: Run yum tasks if package manager is yum
+      include_role:
+        name: yum
+      when: ansible_pkg_mgr == 'yum'
+
+    - name: Run zypper tasks if package manager is zypper
+      include_role:
+        name: zypper
+      when: ansible_pkg_mgr == 'zypper'
+
+    - name: Run Windows updates if OS family is Windows
+      include_role:
+        name: windows
+      when: ansible_os_family == 'Windows'

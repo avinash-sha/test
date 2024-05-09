@@ -1,0 +1,10 @@
+---
+- name: Generate HTML report
+  template:
+    src: report.html.j2
+    dest: "/var/log/update_report.html"
+
+- name: Generate CSV report
+  script: create_csv_report.sh
+  args:
+    executable: /bin/bash

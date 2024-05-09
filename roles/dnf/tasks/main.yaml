@@ -1,0 +1,29 @@
+---
+- name: Ensure DNF package cache is updated
+  dnf:
+    name: "*"
+    state: latest
+    update_cache: yes
+  register: packages_upgraded
+
+- name: Remove unneeded packages
+  dnf:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ packages_upgraded.results | selectattr('state', 'equalto', 'removed') | map(attribute='name') | list }}"
+  when: packages_upgraded is changed
+
+- name: Check if reboot is needed
+  shell: "needs-restarting -r"
+  ignore_errors: true
+  register: reboot_needed
+
+- name: Reboot the machine if required
+  reboot:
+    reboot_timeout: 600
+  when: reboot_needed.rc == 1
+
+- name: Save update report
+  copy:
+    content: "{{ packages_upgraded }}"
+    dest: "/var/log/dnf_update_info_{{ ansible_date_time.iso8601 }}.log"
