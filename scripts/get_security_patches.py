@@ -1,11 +1,11 @@
+import sys
 import yaml
 import requests
 import xml.etree.ElementTree as ET
-import tempfile
 import os
 
 # Create a temporary directory to store the playbooks
-temp_dir = tempfile.mkdtemp()
+target_directory = sys.argv[1]
 
 # Fetch and parse security advisories
 def get_security_updates(url):
@@ -52,20 +52,21 @@ def generate_playbook(advisory_ids, os_type):
     }]
 
     # Write the playbook to a file in the temporary directory
-    playbook_path = os.path.join(temp_dir, f'{os_type}_playbook.yml')
+    playbook_path = os.path.join(target_directory, f'{os_type}_playbook.yml')
     with open(playbook_path, 'w') as file:
         yaml.dump(playbook, file, default_flow_style=False)
 
     print(f"Generated playbook for {os_type} at {playbook_path}")
 
-# Example usage
-urls = {
-    'ubuntu': "https://linuxsecurity.com/advisories/ubuntu?format=feed&type=rss",
-    'fedora': "https://linuxsecurity.com/advisories/fedora?format=feed&type=rss",
-    'rocky': "https://linuxsecurity.com/advisories/rockylinux?format=feed&type=rss",
-    'rhel': "https://linuxsecurity.com/advisories/red-hat?format=feed&type=rss"
-}
+# Main execution flow
+if __name__ == "__main__":
+    urls = {
+        'ubuntu': "https://linuxsecurity.com/advisories/ubuntu?format=feed&type=rss",
+        'fedora': "https://linuxsecurity.com/advisories/fedora?format=feed&type=rss",
+        'rocky': "https://linuxsecurity.com/advisories/rockylinux?format=feed&type=rss",
+        'rhel': "https://linuxsecurity.com/advisories/red-hat?format=feed&type=rss"
+    }
 
-for os_type, url in urls.items():
-    advisories = get_security_updates(url)
-    generate_playbook(advisories, os_type)
+    for os_type, url in urls.items():
+        advisories = get_security_updates(url)
+        generate_playbook(advisories, os_type)
