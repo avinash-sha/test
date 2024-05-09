@@ -1,0 +1,45 @@
+- become: 'yes'
+  hosts: all
+  tasks:
+  - command: sudo dnf update -y
+    name: Update packages
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux
+  - command: sudo dnf upgrade --advisory Linux
+    name: Upgrade advisory Linux

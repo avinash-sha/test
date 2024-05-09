@@ -1,0 +1,45 @@
+- become: 'yes'
+  hosts: all
+  tasks:
+  - command: sudo dnf update -y
+    name: Update packages
+  - command: sudo dnf upgrade --advisory 39
+    name: Upgrade advisory 39
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38
+  - command: sudo dnf upgrade --advisory 39
+    name: Upgrade advisory 39
+  - command: sudo dnf upgrade --advisory 39
+    name: Upgrade advisory 39
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 40
+    name: Upgrade advisory 40
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38
+  - command: sudo dnf upgrade --advisory 38
+    name: Upgrade advisory 38

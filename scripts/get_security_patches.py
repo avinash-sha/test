@@ -26,7 +26,7 @@ def generate_playbook(advisory_ids, os_type):
         'debian': 'sudo apt update && sudo apt upgrade -y',
         'fedora': 'sudo dnf update -y',
         'rocky': 'sudo dnf update -y',
-        'rhel': 'sudo yum update -y'
+        'RedHat': 'sudo yum update -y'
     }[os_type]
 
     for advisory_id in advisory_ids:
@@ -37,7 +37,7 @@ def generate_playbook(advisory_ids, os_type):
                 'debian': f'sudo apt-get --only-upgrade install {advisory_id}',
                 'fedora': f'sudo dnf upgrade --advisory {advisory_id}',
                 'rocky': f'sudo dnf upgrade --advisory {advisory_id}',
-                'rhel': f'sudo yum upgrade --advisory {advisory_id}'
+                'RedHat': f'sudo yum upgrade --advisory {advisory_id}'
             }[os_type]
         }
         tasks.append(task)
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         'ubuntu': "https://linuxsecurity.com/advisories/ubuntu?format=feed&type=rss",
         'fedora': "https://linuxsecurity.com/advisories/fedora?format=feed&type=rss",
         'rocky': "https://linuxsecurity.com/advisories/rockylinux?format=feed&type=rss",
-        'rhel': "https://linuxsecurity.com/advisories/red-hat?format=feed&type=rss"
+        'RedHat': "https://linuxsecurity.com/advisories/red-hat?format=feed&type=rss"
     }
 
     for os_type, url in urls.items():

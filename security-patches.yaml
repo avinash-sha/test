@@ -42,20 +42,13 @@
     temp_dir: "{{ playbook_dir }}/ansible_playbooks"
 
   tasks:
-    - name: Synchronize generated playbook to host
-      synchronize:
-        src: "{{ temp_dir }}/{{ ansible_distribution|lower }}_playbook.yml"
-        dest: "/home/{{ ansible_user }}/{{ ansible_distribution|lower }}_playbook.yml"
-        mode: pull
-      when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RHEL']
-
     - name: Execute the playbook
       ansible.builtin.command:
-        cmd: ansible-playbook "/home/{{ ansible_user }}/{{ ansible_distribution|lower }}_playbook.yml"
-      when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RHEL']
+        cmd: ansible-playbook "{{ temp_dir }}/{{ ansible_distribution|lower }}_playbook.yml"
+      when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RedHat']
 
     - name: Clean up playbook on remote host
       file:
-        path: "/home/{{ ansible_user }}/{{ ansible_distribution|lower }}_playbook.yml"
+        path: "{{ temp_dir }}/{{ ansible_distribution|lower }}_playbook.yml"
         state: absent
-      when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RHEL']
+      when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RedHat']
