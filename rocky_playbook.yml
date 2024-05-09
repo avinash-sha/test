@@ -1,0 +1,45 @@
+- become: 'yes'
+  hosts: all
+  tasks:
+  - command: sudo dnf update -y
+    name: Update packages
+  - command: sudo dnf upgrade --advisory RXSA-2024:1607
+    name: Upgrade advisory RXSA-2024:1607
+  - command: sudo dnf upgrade --advisory RLSA-2024:1688
+    name: Upgrade advisory RLSA-2024:1688
+  - command: sudo dnf upgrade --advisory RLSA-2024:1822
+    name: Upgrade advisory RLSA-2024:1822
+  - command: sudo dnf upgrade --advisory RLSA-2024:1818
+    name: Upgrade advisory RLSA-2024:1818
+  - command: sudo dnf upgrade --advisory RLSA-2024:1939
+    name: Upgrade advisory RLSA-2024:1939
+  - command: sudo dnf upgrade --advisory RLSA-2024:1719
+    name: Upgrade advisory RLSA-2024:1719
+  - command: sudo dnf upgrade --advisory RLSA-2024:1998
+    name: Upgrade advisory RLSA-2024:1998
+  - command: sudo dnf upgrade --advisory RLSA-2024:1962
+    name: Upgrade advisory RLSA-2024:1962
+  - command: sudo dnf upgrade --advisory RLSA-2024:1781
+    name: Upgrade advisory RLSA-2024:1781
+  - command: sudo dnf upgrade --advisory RLSA-2024:1912
+    name: Upgrade advisory RLSA-2024:1912
+  - command: sudo dnf upgrade --advisory RLSA-2024:1690
+    name: Upgrade advisory RLSA-2024:1690
+  - command: sudo dnf upgrade --advisory RLSA-2024:1687
+    name: Upgrade advisory RLSA-2024:1687
+  - command: sudo dnf upgrade --advisory RLSA-2024:1828
+    name: Upgrade advisory RLSA-2024:1828
+  - command: sudo dnf upgrade --advisory RLSA-2024:1751
+    name: Upgrade advisory RLSA-2024:1751
+  - command: sudo dnf upgrade --advisory RLSA-2024:1786
+    name: Upgrade advisory RLSA-2024:1786
+  - command: sudo dnf upgrade --advisory RLSA-2024:1576
+    name: Upgrade advisory RLSA-2024:1576
+  - command: sudo dnf upgrade --advisory RLSA-2024:1576
+    name: Upgrade advisory RLSA-2024:1576
+  - command: sudo dnf upgrade --advisory RLSA-2024:1614
+    name: Upgrade advisory RLSA-2024:1614
+  - command: sudo dnf upgrade --advisory RLSA-2024:1614
+    name: Upgrade advisory RLSA-2024:1614
+  - command: sudo dnf upgrade --advisory RLSA-2024:1644
+    name: Upgrade advisory RLSA-2024:1644

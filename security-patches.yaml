@@ -1,14 +1,72 @@
 ---
-- name: Download and run Python script from GitHub on local Ansible VM
+- name: Download and execute Python script locally
   hosts: localhost
   gather_facts: no
+  vars:
+    temp_dir: "{{ lookup('env', 'HOME') }}/.ansible/tmp/"
 
   tasks:
+    - name: Ensure temporary directory exists
+      file:
+        path: "{{ temp_dir }}"
+        state: directory
+
     - name: Download Python script from GitHub
       get_url:
         url: https://raw.githubusercontent.com/avinash-sha/test/main/scripts/get_security_patches.py
-        dest: get_security_patches.py
-        mode: "0755"
+        dest: "{{ temp_dir }}get_security_patches.py"
+        mode: '0755'
+        validate_certs: no  # Adjust based on your SSL settings
 
-    - name: Run Python script
-      command: python get_security_patches.py
+    - name: Run Python script to generate playbooks
+      command: python3 "{{ temp_dir }}get_security_patches.py"
+      register: script_output
+      failed_when: script_output.rc != 0
+
+    - name: Clean up Python script
+      file:
+        path: "{{ temp_dir }}get_security_patches.py"
+        state: absent
+
+    - name: List files in directory
+      command: ls -lah "{{ temp_dir }}"
+      register: list_files
+
+    - name: Show files
+      debug:
+        var: list_files.stdout_lines
+
+- name: Debugging - List files in temporary directory
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: List files in directory
+      command: ls -lah "{{ lookup('env', 'HOME') }}/.ansible/tmp/"
+      register: list_files
+
+    - name: Show files
+      debug:
+        var: list_files.stdout_lines
+
+- name: Copy and execute playbooks on remote hosts
+  hosts: all
+  gather_facts: yes
+  vars:
+    temp_dir: "{{ lookup('env', 'HOME') }}/.ansible/tmp/"
+
+  tasks:
+    - name: Copy playbook to host
+      copy:
+        src: "{{ temp_dir }}{{ ansible_distribution|lower }}_playbook.yml"
+        dest: "{{ ansible_env.HOME }}/{{ ansible_distribution|lower }}_playbook.yml"
+
+    - name: Execute playbook on remote host
+      command: ansible-playbook "{{ ansible_env.HOME }}/{{ ansible_distribution|lower }}_playbook.yml"
+      delegate_to: "{{ inventory_hostname }}"
+      when: ansible_distribution in ['Ubuntu', 'CentOS', 'Debian', 'Rocky', 'RedHat']
+
+    - name: Remove playbook from remote host
+      file:
+        path: "{{ ansible_env.HOME }}/{{ ansible_distribution|lower }}_playbook.yml"
+        state: absent
+      delegate_to: "{{ inventory_hostname }}"

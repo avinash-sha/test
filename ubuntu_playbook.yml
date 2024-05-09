@@ -1,0 +1,45 @@
+- become: 'yes'
+  hosts: all
+  tasks:
+  - command: sudo apt update && sudo apt upgrade -y
+    name: Update packages
+  - command: sudo apt-get --only-upgrade install USN-6768-1
+    name: Upgrade advisory USN-6768-1
+  - command: sudo apt-get --only-upgrade install USN-6767-1
+    name: Upgrade advisory USN-6767-1
+  - command: sudo apt-get --only-upgrade install USN-6766-1
+    name: Upgrade advisory USN-6766-1
+  - command: sudo apt-get --only-upgrade install USN-6764-1
+    name: Upgrade advisory USN-6764-1
+  - command: sudo apt-get --only-upgrade install USN-6754-2
+    name: Upgrade advisory USN-6754-2
+  - command: sudo apt-get --only-upgrade install USN-6765-1
+    name: Upgrade advisory USN-6765-1
+  - command: sudo apt-get --only-upgrade install USN-6757-2
+    name: Upgrade advisory USN-6757-2
+  - command: sudo apt-get --only-upgrade install USN-6762-1
+    name: Upgrade advisory USN-6762-1
+  - command: sudo apt-get --only-upgrade install USN-6747-2
+    name: Upgrade advisory USN-6747-2
+  - command: sudo apt-get --only-upgrade install USN-6760-1
+    name: Upgrade advisory USN-6760-1
+  - command: sudo apt-get --only-upgrade install USN-6758-1
+    name: Upgrade advisory USN-6758-1
+  - command: sudo apt-get --only-upgrade install USN-6761-1
+    name: Upgrade advisory USN-6761-1
+  - command: sudo apt-get --only-upgrade install USN-6759-1
+    name: Upgrade advisory USN-6759-1
+  - command: sudo apt-get --only-upgrade install USN-6757-1
+    name: Upgrade advisory USN-6757-1
+  - command: sudo apt-get --only-upgrade install USN-6744-3
+    name: Upgrade advisory USN-6744-3
+  - command: sudo apt-get --only-upgrade install USN-6734-2
+    name: Upgrade advisory USN-6734-2
+  - command: sudo apt-get --only-upgrade install USN-6733-2
+    name: Upgrade advisory USN-6733-2
+  - command: sudo apt-get --only-upgrade install USN-6718-3
+    name: Upgrade advisory USN-6718-3
+  - command: sudo apt-get --only-upgrade install USN-6729-3
+    name: Upgrade advisory USN-6729-3
+  - command: sudo apt-get --only-upgrade install USN-6737-2
+    name: Upgrade advisory USN-6737-2

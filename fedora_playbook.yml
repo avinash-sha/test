@@ -1,0 +1,45 @@
+- become: 'yes'
+  hosts: all
+  tasks:
+  - command: sudo dnf update -y
+    name: Update packages
+  - command: sudo dnf upgrade --advisory FEDORA-2024-1b11432d52
+    name: Upgrade advisory FEDORA-2024-1b11432d52
+  - command: sudo dnf upgrade --advisory FEDORA-2024-c702ea0fb1
+    name: Upgrade advisory FEDORA-2024-c702ea0fb1
+  - command: sudo dnf upgrade --advisory FEDORA-2024-612986fdfa
+    name: Upgrade advisory FEDORA-2024-612986fdfa
+  - command: sudo dnf upgrade --advisory FEDORA-2024-982a7184e0
+    name: Upgrade advisory FEDORA-2024-982a7184e0
+  - command: sudo dnf upgrade --advisory FEDORA-2024-050266dc33
+    name: Upgrade advisory FEDORA-2024-050266dc33
+  - command: sudo dnf upgrade --advisory FEDORA-2024-7a57842ec3
+    name: Upgrade advisory FEDORA-2024-7a57842ec3
+  - command: sudo dnf upgrade --advisory FEDORA-2024-a047b1ca2d
+    name: Upgrade advisory FEDORA-2024-a047b1ca2d
+  - command: sudo dnf upgrade --advisory FEDORA-2024-c2f6576348
+    name: Upgrade advisory FEDORA-2024-c2f6576348
+  - command: sudo dnf upgrade --advisory FEDORA-2024-5483bc2adb
+    name: Upgrade advisory FEDORA-2024-5483bc2adb
+  - command: sudo dnf upgrade --advisory FEDORA-2024-9205c35b11
+    name: Upgrade advisory FEDORA-2024-9205c35b11
+  - command: sudo dnf upgrade --advisory FEDORA-2024-d198253c42
+    name: Upgrade advisory FEDORA-2024-d198253c42
+  - command: sudo dnf upgrade --advisory FEDORA-2024-5cf9499b62
+    name: Upgrade advisory FEDORA-2024-5cf9499b62
+  - command: sudo dnf upgrade --advisory FEDORA-2024-010fe8772a
+    name: Upgrade advisory FEDORA-2024-010fe8772a
+  - command: sudo dnf upgrade --advisory FEDORA-2024-75863445ff
+    name: Upgrade advisory FEDORA-2024-75863445ff
+  - command: sudo dnf upgrade --advisory FEDORA-2024-3ff83cb806
+    name: Upgrade advisory FEDORA-2024-3ff83cb806
+  - command: sudo dnf upgrade --advisory FEDORA-2024-3ff83cb806
+    name: Upgrade advisory FEDORA-2024-3ff83cb806
+  - command: sudo dnf upgrade --advisory FEDORA-2024-f35f9525d6
+    name: Upgrade advisory FEDORA-2024-f35f9525d6
+  - command: sudo dnf upgrade --advisory FEDORA-2024-7be0693731
+    name: Upgrade advisory FEDORA-2024-7be0693731
+  - command: sudo dnf upgrade --advisory FEDORA-2024-7be0693731
+    name: Upgrade advisory FEDORA-2024-7be0693731
+  - command: sudo dnf upgrade --advisory FEDORA-2024-600031d2e9
+    name: Upgrade advisory FEDORA-2024-600031d2e9
