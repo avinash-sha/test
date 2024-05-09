@@ -13,5 +13,7 @@ venv/
 .vscode/
 .idea/
 
+*init
+
 # Role files
 roles/*/meta/.galaxy_install_info

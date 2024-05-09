@@ -1,0 +1,14 @@
+---
+- name: Download and run Python script from GitHub on local Ansible VM
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Download Python script from GitHub
+      get_url:
+        url: https://raw.githubusercontent.com/avinash-sha/test/main/scripts/get_security_patches.py
+        dest: get_security_patches.py
+        mode: "0755"
+
+    - name: Run Python script
+      command: python get_security_patches.py
