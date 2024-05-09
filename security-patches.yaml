@@ -21,18 +21,18 @@
     - name: Download Python script from GitHub
       get_url:
         url: https://raw.githubusercontent.com/avinash-sha/test/main/scripts/get_security_patches.py
-        dest: "{{ playbook_dir }}/get_security_patches.py"
+        dest: "{{ temp_dir }}/get_security_patches.py"
         mode: '0755'
         validate_certs: no
 
     - name: Execute Python script to generate playbooks
-      command: python3 "{{ playbook_dir }}/get_security_patches.py" "{{ temp_dir }}"
+      command: python3 "{{ temp_dir }}/get_security_patches.py" "{{ temp_dir }}"
       register: script_output
       failed_when: script_output.rc != 0
 
     - name: Clean up downloaded Python script
       file:
-        path: "{{ playbook_dir }}/get_security_patches.py"
+        path: "{{ temp_dir }}/get_security_patches.py"
         state: absent
 
 - name: Deploy and Execute Playbooks on Hosts
@@ -42,8 +42,9 @@
     temp_dir: "{{ playbook_dir }}/ansible_playbooks"
 
   tasks:
-    - name: Execute the playbook
-      ansible.builtin.command:
+    - name: Execute the playbook locally
+      local_action:
+        module: ansible.builtin.command
         cmd: ansible-playbook "{{ temp_dir }}/{{ ansible_distribution|lower }}_playbook.yml"
       when: ansible_distribution in ['Ubuntu', 'Fedora', 'Rocky', 'RedHat']
 
