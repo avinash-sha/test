@@ -1,4 +1,13 @@
 ---
+- name: Ensure Python 'requests' library is installed
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Install required Python packages
+      ansible.builtin.pip:
+        name: requests
+        state: present
+
 - name: Download and execute Python script locally
   hosts: localhost
   gather_facts: no
